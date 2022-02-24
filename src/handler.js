@@ -1,6 +1,15 @@
 const { nanoid } = require('nanoid');
 const books = require('./books');
 
+const homeHandler = (request, h) => {
+  const response = h.response({
+    status: 'success',
+    message: 'Hai, selamat datang di Bookshelf API'
+  });
+  response.code(200);
+  return response;
+}
+
 const addBookHandler = (request, h) => {
   const {
     name, year, author, summary, publisher,
@@ -219,7 +228,7 @@ const editBookByIdHandler = (request, h) => {
     return response;
   }
 
-/*Author: Ragillio Aji*/
+  /*Author: Ragillio Aji*/
 
   if (index !== -1) {
     books[index] = {
@@ -275,6 +284,7 @@ const deleteBookByIdHandler = (request, h) => {
 };
 
 module.exports = {
+  homeHandler,
   addBookHandler,
   getAllBooksHandler,
   getBookByIdHandler,

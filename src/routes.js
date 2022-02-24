@@ -1,9 +1,15 @@
 const {
+  homeHandler,
   addBookHandler, getAllBooksHandler,
   getBookByIdHandler, editBookByIdHandler, deleteBookByIdHandler,
 } = require('./handler');
 
 const routes = [
+  {
+    method: 'GET',
+    path: '/',
+    handler: homeHandler,
+  },
   {
     method: 'POST',
     path: '/books',
