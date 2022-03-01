@@ -1,5 +1,9 @@
 /* eslint-disable no-console */
 const Hapi = require('@hapi/hapi');
+const Inert = require('@hapi/inert');
+const Vision = require('@hapi/vision');
+const HapiSwagger = require('hapi-swagger');
+const Pack = require('../package.json');
 const routes = require('./routes');
 
 const init = async () => {
@@ -12,6 +16,22 @@ const init = async () => {
       },
     },
   });
+
+  const swaggerOptions = {
+    info: {
+      title: Pack.name,
+      version: Pack.version,
+    },
+  };
+
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions
+    }
+  ]);
 
   server.route(routes);
 
