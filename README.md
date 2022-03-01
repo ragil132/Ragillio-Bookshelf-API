@@ -1,2 +1,2 @@
 # Ragillio-Bookshelf-API
-A backend server to serve book data using Hapi.js
+A super simple backend server to serve book data using Hapi.js with Fake DB
